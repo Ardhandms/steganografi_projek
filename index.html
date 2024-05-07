@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Steganography Encoder & Decoder</title>
+    <link href="./style.css" rel="stylesheet">
+
+</head>
+<body>
+    <div class="container">
+        <div id="Decoder">
+            <h1>Steganograpi Decoder</h1>
+            <input type="file" id="fileInputDecode">
+            <div id="output" style="color: rgba(0, 0, 0, 0.5);">
+                <span id="placeholdertext" style="opacity: 0.5;">Hasil Decode akan tampil disini</span>
+            </div>
+            <button id="decodeButton">Decode</button>
+            <button id="resetButtonDecode">Reset</button>
+        </div>
+    </div>
+
+    <div class="container">
+        <h2>Steganograpi Encoder</h2>
+        <div class="form-group">
+            <label for="fileInputEncode">Pilih Gambar:</label>
+            <label class="custom-file-upload">
+                <input type="file" id="fileInputEncode" >
+            </label>
+        </div>
+        <div class="form-group">
+            <label for="messageInput">Pesan Rahasia:</label>
+            <input type="text" id="messageInput" placeholder="Masukan Pesan Anda Disini...">
+        </div>
+        <div class="form-group">
+            <button id="encodeButton">Encode MPesan</button>
+            <button id="resetButtonEncode">Reset</button>
+        </div>
+        <a id="downloadLink" style="display: none;">Download Encoded Image</a>
+    </div>
+
+    <script src="./script.js"></script>
+</body>
+</html>
