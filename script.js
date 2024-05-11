@@ -1,3 +1,20 @@
+
+function toggleForms(action) {
+  var form1 = document.getElementById("form1");
+  var form2 = document.getElementById("form2");
+
+  if (action === "decode") {
+    form1.style.display = "block";
+    form2.style.display = "none";
+  } else if (action === "encode") {
+    form1.style.display = "none";
+    form2.style.display = "block";
+  }
+}
+
+
+
+//function stepanoghrapy
 document.getElementById('encodeButton').addEventListener('click', function() {
   const fileInput = document.getElementById('fileInputEncode');
   const messageInput = document.getElementById('messageInput').value;

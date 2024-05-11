@@ -1,17 +1,22 @@
-body {
-  font-family: Arial, sans-serif;
-  background-color: #f0f0f0;
-  margin: 0;
-  padding: 0;
+body{
+    background-color: #c9d6ff;
+    background: linear-gradient(to right, #e2e2e2, #c9d6ff);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    height: 100vh;
 }
 
 .container {
-  max-width: 600px;
-  margin: 50px auto;
-  padding: 20px;
   background-color: #fff;
-  border-radius: 5px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  border-radius: 30px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.35);
+  position: relative;
+  overflow: hidden;
+  width: 768px;
+  max-width: 100%;
+  min-height: 450px;
   text-align: center;
 }
 
@@ -22,32 +27,72 @@ h1 {
 
 input[type="file"] {
   margin-bottom: 20px;
+  padding: 10px 30px;
+  border: 1px solid rgb(228, 228, 228);
+  border-radius: 8px;
+  font-weight: 600;
+  
+}
+
+input[type="text"] {
+  background-color: #eee;
+  border: none;
+  margin: 8px 0;
+  padding: 10px 15px;
+  font-size: 13px;
+  border-radius: 8px;
+  width: 300px;
+  height: 20px;
+  outline: none;
 }
 
 #output {
   padding: 10px;
-  background-color: #f9f9f9;
-  border: 1px solid #ccc;
+  background-color: #eee;
+  border: 1px solid #e0e0e0;
   border-radius: 5px;
   min-height: 100px;
+  width: 500px;
   overflow: auto;
   text-align: left;
+  margin: 0 auto;
 }
 
-.form-group button {
-  margin-top: 20px;
-  padding: 10px 20px;
-  border: none;
-  border-radius: 5px;
+
+.container button{
+  font-size: 12px;
+  padding: 10px 30px;
+  border: 1px solid transparent;
+  border-radius: 8px;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  margin-top: 10px;
   cursor: pointer;
 }
 
+.form-container button{
+  background-color:transparent;
+  border: 1px solid transparent;
+  color: #000; 
+  padding: 10px 15px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  cursor: pointer;
+  border-radius: 10px;
+}
+
+#resetButtonDecode,#resetButtonEncode{
+  background-color: #d10404;
+  color: #fff;
+}
 #encodeButton {
-  background-color: #4caf50;
+  background-color: #258b29;
   color: #fff;
 }
 
 #decodeButton {
-  background-color: #ff0000;
+  background-color:#258b29;
   color: #fff;
 }

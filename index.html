@@ -8,37 +8,49 @@
 
 </head>
 <body>
-    <div class="container">
-        <div id="Decoder">
-            <h1>Steganograpi Decoder</h1>
-            <input type="file" id="fileInputDecode">
-            <div id="output" style="color: rgba(0, 0, 0, 0.5);">
-                <span id="placeholdertext" style="opacity: 0.5;">Hasil Decode akan tampil disini</span>
+
+    <div class="form-container" id="form1">
+            <button onclick="toggleForms('decode')">Decode</button> |
+            <button onclick="toggleForms('encode')">Encode</button>
+        <div class="container">
+            <div id="Decoder">
+                <h1>Steganography Decoder</h1>
+                <input type="file" id="fileInputDecode">
+                <div id="output" style="color: rgba(0, 0, 0, 0.5);">
+                    <span id="placeholdertext" style="opacity: 0.5;">Hasil Decode akan tampil disini</span>
+                </div>
+                <button id="decodeButton">Decode</button>
+                <button id="resetButtonDecode">Reset</button>
             </div>
-            <button id="decodeButton">Decode</button>
-            <button id="resetButtonDecode">Reset</button>
         </div>
     </div>
 
-    <div class="container">
-        <h2>Steganograpi Encoder</h2>
-        <div class="form-group">
-            <label for="fileInputEncode">Pilih Gambar:</label>
-            <label class="custom-file-upload">
-                <input type="file" id="fileInputEncode" >
-            </label>
-        </div>
-        <div class="form-group">
-            <label for="messageInput">Pesan Rahasia:</label>
-            <input type="text" id="messageInput" placeholder="Masukan Pesan Anda Disini...">
-        </div>
-        <div class="form-group">
-            <button id="encodeButton">Encode MPesan</button>
-            <button id="resetButtonEncode">Reset</button>
-        </div>
-        <a id="downloadLink" style="display: none;">Download Encoded Image</a>
+    <div class="form-container" id="form2" style="display:none;">
+        <div class="button-grup">
+            <button onclick="toggleForms('decode')">Decode</button> |
+            <button onclick="toggleForms('encode')">Encode</button>
     </div>
-
+        <div class="container">
+            <h2>Steganography Encoder</h2>
+            <div class="form-group">
+                <label for="fileInputEncode">Pilih Gambar:</label>
+                <label class="custom-file-upload">
+                    <input type="file" id="fileInputEncode">
+                </label>
+            </div>
+            <div class="form-group">
+                <label for="messageInput">Pesan Rahasia:</label>
+                <input type="text" id="messageInput" placeholder="Masukan Pesan Anda Disini...">
+            </div>
+            <div class="form-group">
+                <button id="encodeButton">Encode Pesan</button>
+                <button id="resetButtonEncode">Reset</button>
+            </div>
+            <a id="downloadLink" style="display: none; margin-top:15px">Download Encoded Image</a>
+        </div>
+    </div>
+    
+   
     <script src="./script.js"></script>
 </body>
 </html>
