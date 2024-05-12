@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>decode</title>
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+    }
+    .container {
+        width: 80%;
+        margin: 0 auto;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+    }
+    .form {
+    max-width: 20rem;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.form label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-size: 0.875rem; /* 14px */
+    font-weight: 500;
+    color: #333;
+}
+
+.output{
+    display: block;
+    width: 100%;
+    padding: 0.625rem; /* 10px */
+    font-size: 0.875rem; /* 14px */
+    border: 1px solid #ccc;
+    border-radius: 0.25rem;
+    background-color: #f9f9f9;
+    resize: vertical;
+}
+
+/* Dark mode styles */
+@media (prefers-color-scheme: dark) {
+    form label {
+        color: #2c2552;
+        font-size: 0.875rem; /* 14px */
+        font-weight: 500;
+    }
+    form textarea {
+       width: 115%;
+        background-color: #2c2552;
+        outline: #fff;
+        color: #e7e7e7;
+    }
+}
+
+    .form-container {
+        width: 50%;
+        background: linear-gradient(to right, #6a56db 50%, #2c2552 50%); /* Gradient CSS */
+        padding: 70px;
+        border-radius: 8px;
+        box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+    .form-container form {
+        width: 100%;
+    }
+    .form-container h2 {
+        margin-bottom: 20px;
+    }
+    .form-container .form-group {
+        margin-bottom: 20px;
+        width: 100%;
+    }
+    .form-container .form-group input {
+        width: 100%;
+        padding: 10px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+    }
+    .form-container .form-group button {
+        width: 100%;
+        padding: 10px;
+        border: none;
+        border-radius: 4px;
+        background-color: #007bff;
+        color: #fff;
+        cursor: pointer;
+    }
+    @media(min-width: 768px) {
+        .form-container {
+            flex-direction: row;
+            justify-content: center;
+            align-items: flex-start;
+        }
+    }
+    .typography {
+    margin-left: 9%;
+    width: 50%; 
+    background-color: #2c2552;
+    padding: 70px;
+    border-radius: 8px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    align-items: center; 
+    }
+    .button {
+    padding: 0.625rem 1.25rem; /* 10px 20px */
+    font-size: 0.875rem; /* 14px */
+    font-weight: 500;
+    text-decoration: none;
+    display: inline-block;
+    border-radius: 0.25rem; /* 4px */
+    cursor: pointer;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.button:focus {
+    outline: none;
+    box-shadow: 0 0 0 2px rgba(59, 130, 246, 0.5);
+}
+
+/* Tombol dalam mode terang */
+.button.light {
+    color: #333;
+    background-color: #f9f9f9;
+}
+
+.button.light:hover {
+    background-color: #e5e5e5;
+}
+
+/* Tombol dalam mode gelap */
+.button.dark {
+    color: #fff;
+    background-color: #333;
+}
+
+.button.dark:hover {
+    background-color: #444;
+}
+
+
+</style>
+</head>
+<body>
+<div class="bg-cover bg-center bg-fixed h-screen flex items-center justify-center" style="background-image: url('ungu.jpg'); background-size: cover;">
+
+<div class="container">
+     <div class="form-container">
+                <div id="Decoder">
+                  <h2>Steganograpi Decoder</h2>
+            <form>
+                <div class="form-group">
+                    <label for="fileInputDecode">Pilih Gambar</label>
+                    <input id="fileInputDecode" type="file">
+                </div>
+                <form class="max-w-sm mx-auto">
+                    <label for="output">Hasil Decode</label>
+                    <textarea id="output" rows="4" placeholder="Hasil Decode akan tampil disini"></textarea>
+                </form>
+                <div>
+                    <button id="decodeButton">Decode</button>
+                    <button id="resetButtonDecode">Reset</button>
+                </div>                
+            </form>
+        </div>
+        <div class="typography">
+            <h2>ENCODE YOUR FILE</h2>
+            <p>Tekan Tombol Untuk Ke Halaman Encode</p>
+            <a href="indexxx.html" class="button light">Encode Page</a>
+
+        </div>
+        
+    </div>
+</div>
+</div>
+<script src="./script.js"></script>
+</body>
+</html>
+<script>
+    document.getElementById('decodeButton').addEventListener('click', function() {
+  const fileInput = document.getElementById('fileInputDecode');
+  if (!fileInput.files || !fileInput.files[0]) {
+      alert('Please select an image file.');
+      return;
+  }
+
+  const file = fileInput.files[0];
+  const reader = new FileReader();
+
+  reader.onload = function(e) {
+      const img = new Image();
+      img.src = e.target.result;
+
+      img.onload = function() {
+          const canvas = document.createElement('canvas');
+          const ctx = canvas.getContext('2d');
+          canvas.width = img.width;
+          canvas.height = img.height;
+          ctx.drawImage(img, 0, 0);
+
+          const imageData = ctx.getImageData(0, 0, canvas.width, canvas.height);
+          const pixels = imageData.data;
+
+          let extractedText = '';
+
+          for (let i = 0; i < pixels.length; i += 4) {
+              const r = pixels[i];
+              const g = pixels[i + 1];
+              const b = pixels[i + 2];
+              extractedText += (r & 1);
+              extractedText += (g & 1);
+              extractedText += (b & 1);
+          }
+
+          extractedText = extractedText.match(/.{1,8}/g).map(byte => {
+              const charCode = parseInt(byte, 2);
+              return charCode >= 32 && charCode <= 126 ? String.fromCharCode(charCode) : '';
+          }).join('');
+
+          document.getElementById('output').innerText = extractedText;
+      }
+  }
+
+  reader.readAsDataURL(file);
+});
+
+document.getElementById('resetButtonEncode').addEventListener('click', function() {
+  document.getElementById('fileInputEncode').value = '';
+  document.getElementById('messageInput').value = '';
+  document.getElementById('downloadLink').style.display = 'none';
+});
+
+document.getElementById('resetButtonDecode').addEventListener('click', function() {
+  document.getElementById('fileInputDecode').value = '';
+  document.getElementById('output').innerText = '';
+});
+
+
+function hideMessageInImage(imageData, message) {
+const pixels = imageData.data;
+let messageBits = '';
+
+// Convert message to binary
+for (let i = 0; i < message.length; i++) {
+const charCode = message.charCodeAt(i);
+if (charCode >= 32 && charCode <= 126) { // Hanya karakter ASCII yang valid
+  const binaryChar = charCode.toString(2).padStart(8, '0');
+  messageBits += binaryChar;
+}
+}
+
+let messageIndex = 0;
+for (let i = 0; i < pixels.length; i += 4) {
+for (let j = 0; j < 3; j++) { // Loop through RGB
+  if (messageIndex < messageBits.length) {
+      const pixelBit = pixels[i + j] & 1; // Get LSB of color value
+      const messageBit = parseInt(messageBits[messageIndex]);
+
+      // Modify LSB of color value to match message bit
+      pixels[i + j] = (pixels[i + j] & ~1) | messageBit;
+      messageIndex++;
+  } else {
+      // Set remaining LSBs to their original values
+      pixels[i + j] = pixels[i + j] & ~1;
+  }
+}
+}
+
+return imageData;
+}
+</script>

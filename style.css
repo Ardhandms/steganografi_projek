@@ -3,21 +3,28 @@ body {
   background-color: #f0f0f0;
   margin: 0;
   padding: 0;
+  overflow: hidden;
 }
 
 .container {
-  max-width: 600px;
-  margin: 50px auto;
-  padding: 20px;
-  background-color: #fff;
-  border-radius: 5px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-  text-align: center;
+  width: 80%;
+  margin: 0 auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
 }
 
-h1 {
-  margin-bottom: 20px;
-  color: #333;
+
+.h2 {
+  display: block;
+  font-size: 1.5em;
+  margin-block-start: 0.83em;
+  margin-block-end: 0.83em;
+  margin-inline-start: 0px;
+  margin-inline-end: 0px;
+  font-weight: bold;
+  unicode-bidi: isolate;
 }
 
 input[type="file"] {
@@ -51,3 +58,4 @@ input[type="file"] {
   background-color: #ff0000;
   color: #fff;
 }
+
